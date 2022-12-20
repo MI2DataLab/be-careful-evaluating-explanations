@@ -23,6 +23,7 @@ class ClassifierTrainer(LightningModule):
         self.classes = classes
         self.num_classes = len(classes)
         self.metrics_task = "binary" if self.num_classes == 1 else "multilabel"
+        self.selected_class = None
         try:
             self.classifier = models_functions[classifier_model.lower()](
                 self.num_classes
