@@ -54,12 +54,12 @@ def main(
     model_positive_regularization = (
         ClassifierWithROITrainer.load_from_checkpoint(
             positive_model_checkpoint_path
-        )
+        ).eval()
     )
     model_negative_regularization = (
         ClassifierWithROITrainer.load_from_checkpoint(
             negative_model_checkpoint_path
-        )
+        ).eval()
     )
     ##
     layer_positive_regularization = (

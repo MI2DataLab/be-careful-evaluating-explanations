@@ -48,7 +48,7 @@ def main(
     save_folder: str,
 ):
     save_folder = Path(save_folder)
-    model = ClassifierTrainer.load_from_checkpoint(model_checkpoint_path)
+    model = ClassifierTrainer.load_from_checkpoint(model_checkpoint_path).eval()
 
     layer = model.classifier.features[-2].denselayer16.layers[-1]
 
