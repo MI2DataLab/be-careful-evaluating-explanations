@@ -115,10 +115,10 @@ def main(
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument("--model_checkpoint_path", type="str", required=True)
+    parser.add_argument("--model_checkpoint_path", type=str, required=True)
     parser.add_argument(
-        "--class_to_generate_heatmaps_for", type="str", required=True
+        "--class_to_generate_heatmaps_for", type=str, required=True
     )
-    parser.add_argument("--save_folder", type="str", default=SAVE_FOLDER)
+    parser.add_argument("--save_folder", type=str, default=SAVE_FOLDER)
     args = vars(parser.parse_args())
     main(**args)

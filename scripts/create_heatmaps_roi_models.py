@@ -167,19 +167,16 @@ def main(
 if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument(
-        "--positive_model_checkpoint_path", type="str", required=True
+        "--positive_model_checkpoint_path", type=str, required=True
     )
     parser.add_argument(
-        "--negative_model_checkpoint_path", type="str", required=True
+        "--negative_model_checkpoint_path", type=str, required=True
     )
     parser.add_argument(
-        "--class_to_generate_heatmaps_for", type="str", required=True
+        "--positive_save_folder", type=str, default=POSITIVE_SAVE_FOLDER
     )
     parser.add_argument(
-        "--positive_save_folder", type="str", default=POSITIVE_SAVE_FOLDER
-    )
-    parser.add_argument(
-        "--negative_save_folder", type="str", default=NEGATIVE_SAVE_FOLDER
+        "--negative_save_folder", type=str, default=NEGATIVE_SAVE_FOLDER
     )
     args = vars(parser.parse_args())
     main(**args)
