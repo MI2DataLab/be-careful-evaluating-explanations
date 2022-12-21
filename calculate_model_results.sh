@@ -1,5 +1,5 @@
 #!/bin/bash
-source /raid/shared/mchrabaszcz/conda/bin/activate raising-remarks
+source your/python/model/environment
 
 python scripts/calculate_mi.py --positive_regularization_model_Enlarged_Cardiomediastinum_path "CheXlocalize_models/inside_mask_fine_tuned_E_Cardiom.ckpt" --positive_regularization_model_Atelectasis_path "CheXlocalize_models/inside_mask_fine_tuned_Atelectasis.ckpt" --negative_regularization_model_Enlarged_Cardiomediastinum_path "CheXlocalize_models/out_of_mask_fine_tuned_E_Cardiom.ckpt" --negative_regularization_model_Atelectasis_path "CheXlocalize_models/out_of_mask_fine_tuned_Atelectasis.ckpt" --normal_model_path "CheXlocalize_models/chexpert_pretrained_model.ckpt"
 

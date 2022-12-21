@@ -1,5 +1,5 @@
 #!/bin/bash
-source /raid/shared/mchrabaszcz/conda/bin/activate chexlocalize
+source your/python/chexlocalize/environment
 ## eval hitrate
 python scripts/chexlocalize_scripts/eval.py --metric hitmiss --gt_path 'dataset/chexlocalize/CheXlocalize/gt_segmentations_val.json' --pred_path 'gradcam_maps/negative_regularization/' --save_dir 'negative_regularization'
 python scripts/chexlocalize_scripts/eval.py --metric hitmiss --gt_path 'dataset/chexlocalize/CheXlocalize/gt_segmentations_val.json' --pred_path 'gradcam_maps/positive_regularization/' --save_dir 'positive_regularization'
