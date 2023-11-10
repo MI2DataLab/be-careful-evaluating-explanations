@@ -1,0 +1,248 @@
+# pytorch_lightning==2.0.0
+seed_everything: true
+trainer:
+  accelerator: gpu
+  strategy: auto
+  devices: auto
+  num_nodes: 1
+  precision: bf16-mixed
+  logger:
+    class_path: pytorch_lightning.loggers.WandbLogger
+    init_args:
+      name: null
+      save_dir: .
+      version: null
+      offline: false
+      dir: null
+      id: null
+      anonymous: null
+      project: CheXpert
+      log_model: false
+      experiment: null
+      prefix: ""
+      checkpoint_name: null
+      job_type: null
+      config: null
+      entity: null
+      reinit: null
+      tags: 
+        - RadImageNet
+      group: null
+      notes: null
+      magic: null
+      config_exclude_keys: null
+      config_include_keys: null
+      mode: null
+      allow_val_change: null
+      resume: null
+      force: null
+      tensorboard: null
+      sync_tensorboard: null
+      monitor_gym: null
+      save_code: null
+      settings: null
+  callbacks:
+    - class_path: pytorch_lightning.callbacks.LearningRateMonitor
+      init_args:
+        logging_interval: step
+        log_momentum: false
+    - class_path: pytorch_lightning.callbacks.ModelCheckpoint
+      init_args:
+        dirpath: null
+        filename: null
+        monitor: null
+        verbose: false
+        save_last: null
+        save_top_k: -1
+        save_weights_only: true
+        mode: min
+        auto_insert_metric_name: true
+        every_n_train_steps: 1000
+        train_time_interval: null
+        every_n_epochs: null
+        save_on_train_epoch_end: null
+  # - class_path: pytorch_lightning.callbacks.BatchSizeFinder
+  #   init_args:
+  #     mode: power
+  #     steps_per_trial: 3
+  #     init_val: 2
+  #     max_trials: 25
+  #     batch_arg_name: batch_size
+  fast_dev_run: false
+  max_epochs: null
+  min_epochs: null
+  max_steps: 150000
+  min_steps: null
+  max_time: null
+  limit_train_batches: null
+  limit_val_batches: null
+  limit_test_batches: null
+  limit_predict_batches: null
+  overfit_batches: 0.0
+  val_check_interval: null
+  check_val_every_n_epoch: 1
+  num_sanity_val_steps: null
+  log_every_n_steps: null
+  enable_checkpointing: null
+  enable_progress_bar: null
+  enable_model_summary: null
+  accumulate_grad_batches: 1
+  gradient_clip_val: null
+  gradient_clip_algorithm: null
+  deterministic: null
+  benchmark: null
+  inference_mode: true
+  use_distributed_sampler: true
+  profiler: null
+  detect_anomaly: false
+  barebones: false
+  plugins: null
+  sync_batchnorm: false
+  reload_dataloaders_every_n_epochs: 0
+  default_root_dir: null
+model:
+  classifier_model: vit
+  optimizer:
+    class_path: torch.optim.AdamW
+    init_args:
+      lr: 0.0005
+      betas:
+        - 0.9
+        - 0.999
+      eps: 1.0e-08
+      weight_decay: 0.1
+      amsgrad: false
+      maximize: false
+      foreach: null
+      capturable: false
+  lr_scheduler: null
+  patch_size: 16
+  dropout: 0
+data:
+  csv_path: data/radiology_ai/data.csv
+  data_path: data/radiology_ai/
+  classes:
+    - Airspace_opacity
+    - Bronchiectasis
+    - Nodule
+    - Parenchyma_destruction
+    - Plantar_plate_tear
+    - abductor_pathology_
+    - abnormal_entire_organ
+    - achilles_pathology_
+    - acj_oa
+    - acl_pathology
+    - acute_infarct
+    - adrenal_pathology
+    - aorta
+    - arterial_pathology
+    - arteriovenous_anomaly
+    - ascites
+    - atfl_pathology
+    - biceps_pathology
+    - bil_dil
+    - bladder
+    - bladder_pathology
+    - bone_inflammation
+    - bowel_abnormality
+    - bowel_inflammation
+    - bowel_mass
+    - ca++_tendinosis
+    - capsular_pathology
+    - cbd
+    - cfl_pathology
+    - chondral_abnormality
+    - chondral_pathology
+    - chronic_infarct
+    - coalition
+    - cord_pathology_
+    - cystic_lesions
+    - degenerative_changes
+    - deltoid_pathology
+    - dilated_urinary_tract
+    - disc_pathology
+    - dural_epidural_abn
+    - edema
+    - enlarged_organ
+    - extensor_pathology_
+    - extra
+    - facet_arthropathy
+    - fat_containing_tumor
+    - fcl_pathology
+    - fibroid
+    - flexor_pathology_
+    - focal_flair_hyper
+    - foraminal_pathlogy
+    - fracture
+    - gallbladder_pathology
+    - gallstone
+    - gb
+    - ghj_oa
+    - hamstring_pathology
+    - hematoma
+    - infraspinatus_pathology
+    - interstitial_lung_disease
+    - intra
+    - intraperitoneal_mass
+    - ivc
+    - kidney
+    - labral_pathology
+    - lisfranc_pathology
+    - liver
+    - liver_disease_
+    - liver_lesion
+    - marrow_abn
+    - marrow_inflammation
+    - mcl_pathology
+    - meniscal_abnormality
+    - muscle_strain
+    - normal
+    - osseous_abn
+    - osseous_disruption
+    - osseous_lesion
+    - osseous_neoplasm
+    - ovarian_pathology
+    - ovary
+    - pancreas
+    - pancreatic_lesion
+    - patella_pathology
+    - pcl_pathology
+    - peroneal_pathology
+    - pituatary_lesion
+    - plantar_fascia_pathology
+    - portal_vein
+    - post_op
+    - post_operative_acl
+    - prostate_lesion
+    - quad_pathology
+    - renal_lesion
+    - scoliosis
+    - soft_tissue_collection
+    - soft_tissue_edema
+    - soft_tissue_fluid
+    - soft_tissue_fluid_collection
+    - soft_tissue_mass
+    - spleen
+    - splenic_lesion
+    - spring_ligament_injury
+    - subscapularis_pathology
+    - supraspinatus_pathology
+    - syndesmosis_pathology
+    - thyroid
+    - thyroid_nodule
+    - urolithiasis
+    - uterine_pathology
+    - uterus
+    - white_matter_changes
+  image_size:
+    - 224
+    - 224
+  use_augmentation: true
+  normalization_coeffs:
+    - 0.5
+    - 0.5
+  batch_size: 128
+  dataloader_params:
+    num_workers: 8
+  num_channels: 1
+  test_size: 0.05

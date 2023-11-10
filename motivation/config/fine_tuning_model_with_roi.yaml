@@ -1,0 +1,30 @@
+data:
+  train_csv: "dataset/chexlocalize/CheXpert/test_labels.csv"
+  valid_csv: "dataset/chexlocalize/CheXpert/val_labels.csv"
+  data_path: "dataset/chexlocalize/CheXpert/"
+  image_size:
+    - 320
+    - 320
+  dataloader_params:
+    batch_size: 32
+    num_workers: 16
+model_config:
+  classifier_model: "densenet"
+  optimizer_params:
+    lr: 0.00002
+    betas:
+      - 0.9
+      - 0.999
+  selected_class: "Atelectasis"
+  location_loss_lambda: 2
+pretrained_model_path: CheXpert-training/CheXpert/2frn8z0l/checkpoints/epoch=19-step=69000.ckpt
+trainer_config:
+  accelerator: "gpu"
+  # fast_dev_run: True
+  max_epochs: 1000
+  log_every_n_steps: 10
+model_checkpoint_callback_config:
+  save_top_k: -1
+  every_n_train_steps: 1000
+logger_config:
+  project: "CheXpert-roi-tuning"

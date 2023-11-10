@@ -1,4 +1,3 @@
-# %%
 import json
 from pathlib import Path
 
@@ -6,7 +5,6 @@ import numpy as np
 from PIL import Image, ImageDraw
 from tqdm import tqdm
 
-# %%
 chexlocalize_path = Path("dataset/chexlocalize/")
 
 with open(chexlocalize_path / "CheXlocalize/gt_annotations_val.json") as f:
@@ -37,8 +35,6 @@ for patient, annotation_dict in tqdm(annotations.items()):
         if key == "img_size":
             img_size = value
         else:
-            if key == "Airspace Opacity":
-                key = "Lung Opacity"
             mask = create_mask(value, img_size)
             save_path = str(
                 chexlocalize_path
@@ -51,7 +47,7 @@ for patient, annotation_dict in tqdm(annotations.items()):
                 )
             )
             np.save(save_path, mask, False)
-# %%
+
 with open(chexlocalize_path / "CheXlocalize/gt_annotations_test.json") as f:
     annotations = json.load(f)
 
@@ -60,8 +56,6 @@ for patient, annotation_dict in tqdm(annotations.items()):
         if key == "img_size":
             img_size = value
         else:
-            if key == "Airspace Opacity":
-                key = "Lung Opacity"
             mask = create_mask(value, img_size)
             save_path = str(
                 chexlocalize_path
@@ -74,8 +68,3 @@ for patient, annotation_dict in tqdm(annotations.items()):
                 )
             )
             np.save(save_path, mask, False)
-
-# %%
-with open(chexlocalize_path / "CheXlocalize/gt_segmentations_val.json") as f:
-    annotations = json.load(f)
-# %%

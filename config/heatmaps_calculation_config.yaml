@@ -1,0 +1,17 @@
+data_config:
+  csv_path: dataset/chexlocalize/CheXpert/val_labels.csv
+  data_path: dataset/chexlocalize/CheXpert/
+  image_size: 
+    - 224
+    - 224
+  rescale_factor: 0.00392156862745098
+  img_normalization_coeffs:
+    - 0.5
+    - 0.5
+  num_channels: 3
+model_config:
+  model_path: none
+  device: cpu
+save_folder: results/heatmaps
+selected_class: Atelectasis
+xai_method: gradient
